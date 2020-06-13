@@ -27,20 +27,20 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/Query.vue')
   },
   {
-    path: '/badminton',
-    name: 'Badminton',
+    path: '/:sport',
+    name: 'sport',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Badminton.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Calendar.vue')
   },
   {
-    path: '/basketball',
-    name: 'Basketball',
+    path: '/:sport/:date',
+    name: 'date',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Basketball.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Date.vue')
   }
 ]
 

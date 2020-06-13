@@ -22,8 +22,12 @@
               <v-stepper-content step="2"></v-stepper-content>
               <v-stepper-step step="3" :complete="step>3">選擇時段</v-stepper-step>
               <v-stepper-content step="3"></v-stepper-content>
+              <v-stepper-step step="4" :complete="step>4">填寫資料</v-stepper-step>
+              <v-stepper-content step="4"></v-stepper-content>
+              <v-stepper-step step="5" :complete="step>5">成功預約</v-stepper-step>
+              <v-stepper-content step="5"></v-stepper-content>
             </v-stepper>
-            <v-btn class="ma-4" color="purple" @click="step = step>3?1:++step">
+            <v-btn class="ma-4" color="purple" @click="step = step>5?1:++step">
               <v-icon left>mdi-battery-outline</v-icon>++
             </v-btn>
           </div>

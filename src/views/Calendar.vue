@@ -1,6 +1,7 @@
 <template>
   <v-row align="center" justify="center">
     <v-col cols="8">
+      <v-alert type="info"> Router value:{{ $route.params }} </v-alert>
       <v-sheet height="500" class="mr-4">
         <v-btn class="ma-2" @click="$refs.calendar.prev()">
           <v-icon>mdi-chevron-left</v-icon>
@@ -21,7 +22,7 @@
 </template>
 <script>
 export default {
-  name: 'Badminton',
+  name: 'Calendar',
   components: {
   },
   data () {
@@ -64,6 +65,7 @@ export default {
       // ajax
       if (this.events.filter((x) => { return x.start === date }).length === 1) {
         // 可以預約的日子
+        this.$router.push({ path: `/${this.$route.params.sport}/${date}` })
       }
     }
   }

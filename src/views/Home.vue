@@ -6,7 +6,7 @@
         class="my-3 Badminton"
         contain
         height="200"
-        @click="$router.push('badminton')"
+        @click="$router.push({ path: '/badminton' })"
       >
       </v-img>
       <v-img
@@ -14,7 +14,7 @@
         class="my-3 Basketball"
         contain
         height="200"
-        @click="$router.push('basketball')"
+        @click="$router.push({ path: '/basketball' })"
       >
       </v-img>
     </v-row>
@@ -34,13 +34,13 @@ export default {
 <style scoped>
 .Basketball:hover {
   transform: scale(1.2) rotate(140deg);
-  transition:cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: cubic-bezier(0.68, -0.55, 0.265, 1.55);
   transition-duration: 1s;
   cursor: pointer;
 }
-.Badminton:hover{
+.Badminton:hover {
   transform: scale(1.2) rotate(140deg);
-  transition:cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: cubic-bezier(0.68, -0.55, 0.265, 1.55);
   transition-duration: 1s;
   cursor: pointer;
 }
