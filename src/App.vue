@@ -4,32 +4,18 @@
       <v-app-bar app color="cyan" dark>
         <v-toolbar-title>運動中心預約系統</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn color="purple" @click="$router.push('/')">
+        <v-btn color="purple" @click="$router.replace('/');step = 1">
           <v-icon left>mdi-book</v-icon>預約
         </v-btn>
-        <v-btn class="ma-4" color="purple" @click="$router.push('query')">
+        <v-btn class="ma-4" color="purple" @click="$router.replace('/query');step = 1">
           <v-icon left>mdi-information-outline</v-icon>查詢
         </v-btn>
       </v-app-bar>
 
       <v-content fluid>
-        <div class="parent">
+        <div class="parent" v-on:step-change="alert('a')">
           <div class="div1">
-            <v-stepper v-model="step" vertical>
-              <v-stepper-step step="1" :complete="step>1">選擇運動類型</v-stepper-step>
-              <v-stepper-content step="1"></v-stepper-content>
-              <v-stepper-step step="2" :complete="step>2">選擇日期</v-stepper-step>
-              <v-stepper-content step="2"></v-stepper-content>
-              <v-stepper-step step="3" :complete="step>3">選擇時段</v-stepper-step>
-              <v-stepper-content step="3"></v-stepper-content>
-              <v-stepper-step step="4" :complete="step>4">填寫資料</v-stepper-step>
-              <v-stepper-content step="4"></v-stepper-content>
-              <v-stepper-step step="5" :complete="step>5">成功預約</v-stepper-step>
-              <v-stepper-content step="5"></v-stepper-content>
-            </v-stepper>
-            <v-btn class="ma-4" color="purple" @click="step = step>5?1:++step">
-              <v-icon left>mdi-battery-outline</v-icon>++
-            </v-btn>
+            <stepper :step="step" />
           </div>
           <div class="div2">
             <router-view></router-view>
@@ -47,18 +33,19 @@
 
 <script>
 // import HelloWorld from './components/HelloWorld'
-
+import stepper from './components/stepper'
 export default {
   name: 'App',
 
   components: {
     // HelloWorld
+    stepper
   },
-
-  data: () => ({
-    //
-    step: 2
-  })
+  data () {
+    return {
+      step: 3
+    }
+  }
 }
 </script>
 <style scoped>

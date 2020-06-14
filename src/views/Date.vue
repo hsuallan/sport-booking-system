@@ -64,6 +64,7 @@
                       <v-col cols="5">
                         <v-text-field
                           label="預約人姓名*"
+                          v-model="order.name"
                           required
                         ></v-text-field>
                       </v-col>
@@ -71,18 +72,21 @@
                       <v-col cols="6">
                         <v-text-field
                           label="預約人電話*"
+                          v-model="order.phone"
                           required
                         ></v-text-field>
                       </v-col>
                       <v-col cols="12">
                         <v-text-field
                           label="預約人電子郵件*"
+                          v-model="order.mail"
                           required
                         ></v-text-field>
                       </v-col>
                       <v-col cols="12">
                         <v-text-field
                           label="預約人身分證字號*"
+                          v-model="order.id"
                           type="password"
                           required
                         ></v-text-field>
@@ -90,16 +94,16 @@
                     </v-row>
                     <v-row no-gutters>
                       <v-col cols="5">
-                        <v-text-field label="緊急聯絡人姓名"></v-text-field>
+                        <v-text-field label="緊急聯絡人姓名" v-model="order.emergencyName"></v-text-field>
                       </v-col>
                       <v-col cols="1"> </v-col>
                       <v-col cols="6">
-                        <v-text-field label="緊急聯絡人電話"></v-text-field>
+                        <v-text-field label="緊急聯絡人電話" v-model="order.emergencyPhone"></v-text-field>
                       </v-col>
                     </v-row>
                     <v-row>
                       <v-col cols="6">
-                        <v-text-field label="與緊急聯絡人之關係"></v-text-field>
+                        <v-text-field label="與緊急聯絡人之關係" v-model="order.emergencyRelation"></v-text-field>
                       </v-col>
                     </v-row>
                   </v-container>
@@ -107,7 +111,7 @@
                 </v-card-text>
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <v-btn color="green darken-1" text @click="dialog = false"
+                  <v-btn color="green darken-1" text @click="booking()"
                     >確定預約</v-btn
                   >
                   <v-btn color="green darken-1" text @click="dialog = false"
@@ -137,6 +141,7 @@ export default {
       search: '',
       loading: true,
       dialog: false,
+      order: {},
       headers: [
         {
           text: '場地位置',
@@ -149,7 +154,7 @@ export default {
         { text: '預約狀態', value: 'order' }
       ],
       status: [
-        {
+        /* {
           name: '5F羽球場01',
           date: this.$route.params.date,
           time: '06:00 - 07:00',
@@ -167,19 +172,27 @@ export default {
           date: this.$route.params.date,
           time: '07:00 - 08:00',
           order: false
-        }
+        } */
       ]
     }
   },
   methods: {
-    show: function (item) {
-      // ajax to next
+    booking: function () {
+      /**
+       * ajax here
+       * put this.dialog = false in then() to close dialog
+       * post data this.order
+       * redirect to /done
+       */
+      this.dialog = false
+      this.$router.replace('/done')
+      console.table(this.order)
     }
   },
   mounted: function () {
     /**
      * ajax here
-     * put this.loading = false in then()
+     * put this.loading = false in then() to close loading
      * post data this.$route.params
      * let status = ajax_result
      */

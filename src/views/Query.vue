@@ -64,7 +64,13 @@ export default {
       return '#' + ((1 << 24) * Math.random() | 0).toString(16)
     },
     query: () => {
-      // TODO:ajax
+      /**
+       * ajax here
+       * use this.id and this.pw
+       * put response into queryData
+       * TODO parse queryData
+       *  set random color to evert queryData
+       */
     }
   },
   data () {
@@ -72,7 +78,7 @@ export default {
       id: '',
       pw: '',
       queryData: [
-        {
+        /* {
           text: 'first',
           color: this.colorgen()
         },
@@ -83,7 +89,7 @@ export default {
         {
           text: 'Third',
           color: this.colorgen()
-        }
+        } */
       ]
     }
   }

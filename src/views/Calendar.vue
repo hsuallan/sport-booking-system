@@ -62,9 +62,8 @@ export default {
   },
   watch: {
     clickDate: function (date) {
-      // ajax
+      // ajax NOT here => date.vue mounted function
       if (this.events.filter((x) => { return x.start === date }).length === 1) {
-        // 可以預約的日子
         this.$router.push({ path: `/${this.$route.params.sport}/${date}` })
       }
     }
