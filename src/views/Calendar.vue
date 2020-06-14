@@ -64,6 +64,7 @@ export default {
     clickDate: function (date) {
       // ajax NOT here => date.vue mounted function
       if (this.events.filter((x) => { return x.start === date }).length === 1) {
+        this.$emit('step-change', 3)
         this.$router.push({ path: `/${this.$route.params.sport}/${date}` })
       }
     }

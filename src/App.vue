@@ -13,12 +13,12 @@
       </v-app-bar>
 
       <v-content fluid>
-        <div class="parent" v-on:step-change="alert('a')">
+        <div class="parent">
           <div class="div1">
             <stepper :step="step" />
           </div>
           <div class="div2">
-            <router-view></router-view>
+            <router-view v-on:step-change="stepChange"></router-view>
           </div>
         </div>
       </v-content>
@@ -44,6 +44,12 @@ export default {
   data () {
     return {
       step: 3
+    }
+  },
+  methods: {
+    stepChange: function (newStep) {
+      // new
+      this.step = newStep
     }
   }
 }

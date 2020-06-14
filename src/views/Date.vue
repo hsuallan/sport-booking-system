@@ -26,6 +26,7 @@
               v-model="dialog"
               max-width="500"
               v-if="item.order !== true"
+              @click:outside="$emit('step-change', 3)"
             >
               <template v-slot:activator="{ on, attrs }">
                 <v-btn
@@ -34,6 +35,7 @@
                   color="indigo"
                   v-bind="attrs"
                   v-on="on"
+                  @click="$emit('step-change', 4)"
                   :disabled="item.order"
                 >
                   我要預約
@@ -94,16 +96,25 @@
                     </v-row>
                     <v-row no-gutters>
                       <v-col cols="5">
-                        <v-text-field label="緊急聯絡人姓名" v-model="order.emergencyName"></v-text-field>
+                        <v-text-field
+                          label="緊急聯絡人姓名"
+                          v-model="order.emergencyName"
+                        ></v-text-field>
                       </v-col>
                       <v-col cols="1"> </v-col>
                       <v-col cols="6">
-                        <v-text-field label="緊急聯絡人電話" v-model="order.emergencyPhone"></v-text-field>
+                        <v-text-field
+                          label="緊急聯絡人電話"
+                          v-model="order.emergencyPhone"
+                        ></v-text-field>
                       </v-col>
                     </v-row>
                     <v-row>
                       <v-col cols="6">
-                        <v-text-field label="與緊急聯絡人之關係" v-model="order.emergencyRelation"></v-text-field>
+                        <v-text-field
+                          label="與緊急聯絡人之關係"
+                          v-model="order.emergencyRelation"
+                        ></v-text-field>
                       </v-col>
                     </v-row>
                   </v-container>
@@ -111,10 +122,16 @@
                 </v-card-text>
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <v-btn color="green darken-1" text @click="booking()"
+                  <v-btn color="green darken-1" text @click="booking(item)"
                     >確定預約</v-btn
                   >
-                  <v-btn color="green darken-1" text @click="dialog = false"
+                  <v-btn
+                    color="green darken-1"
+                    text
+                    @click="
+                      dialog = false;
+                      $emit('step-change', 3);
+                    "
                     >再...讓我想一下<br />(機會4不等人的ㄛ)</v-btn
                   >
                 </v-card-actions>
@@ -177,7 +194,7 @@ export default {
     }
   },
   methods: {
-    booking: function () {
+    booking: function (item) {
       /**
        * ajax here
        * put this.dialog = false in then() to close dialog
@@ -185,7 +202,7 @@ export default {
        * redirect to /done
        */
       this.dialog = false
-      this.$router.replace('/done')
+      this.$router.replace({ name: 'done', params: { order: this.order, item: item } })
       console.table(this.order)
     }
   },

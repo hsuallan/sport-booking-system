@@ -17,7 +17,6 @@
                 counter="10"
                 required
               ></v-text-field>
-
               <v-text-field
                 id="password"
                 label="查詢金鑰"
@@ -32,22 +31,27 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="primary" @click="query('')">查詢</v-btn>
+            <v-btn color="primary" @click="query()">查詢</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
     </v-row>
     <v-row align="center" justify="center" v-if="queryData.length !== 0">
       <v-col cols="12" sm="8" md="4">
-        <v-carousel height="350" hide-delimiter-background show-arrows-on-hover>
-          <v-carousel-item v-for="(item, i) in queryData" :key="i">
-            <v-sheet :color="item.color" height="100%">
-              <v-row class="fill-height" align="center" justify="center">
-                <div class="display-3">{{ item.text }} Slide</div>
-              </v-row>
-            </v-sheet>
-          </v-carousel-item>
-        </v-carousel>
+        <v-simple-table dark>
+          <tbody>
+            <tr>
+              <td>位置</td>
+              <td>日期</td>
+              <td>時段</td>
+            </tr>
+            <tr v-for="(item, i) in queryData" :key="i">
+              <td>{{ item.name }}</td>
+              <td>{{ item.date }}</td>
+              <td>{{ item.time }}</td>
+            </tr>
+          </tbody>
+        </v-simple-table>
       </v-col>
     </v-row>
   </div>
@@ -68,8 +72,6 @@ export default {
        * ajax here
        * use this.id and this.pw
        * put response into queryData
-       * TODO parse queryData
-       *  set random color to evert queryData
        */
     }
   },
@@ -79,16 +81,24 @@ export default {
       pw: '',
       queryData: [
         /* {
-          text: 'first',
-          color: this.colorgen()
+          name: '5樓羽球場A',
+          date: '2020-06-18',
+          time: '07:00-08:00'
         },
         {
-          text: 'Second',
-          color: this.colorgen()
+          name: '5樓羽球場A',
+          date: '2020-06-18',
+          time: '08:00-09:00'
         },
         {
-          text: 'Third',
-          color: this.colorgen()
+          name: '5樓羽球場A',
+          date: '2020-06-19',
+          time: '14:00-15:00'
+        },
+        {
+          name: '5樓羽球場C',
+          date: '2020-06-19',
+          time: '15:00-16:00'
         } */
       ]
     }

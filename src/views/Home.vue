@@ -6,7 +6,7 @@
         class="my-3 Badminton"
         contain
         height="200"
-        @click="$router.push({ path: '/badminton' })"
+        @click="$router.push({ path: '/badminton' });$emit('step-change',2)"
       >
       </v-img>
       <v-img
@@ -14,7 +14,7 @@
         class="my-3 Basketball"
         contain
         height="200"
-        @click="$router.push({ path: '/basketball' })"
+        @click="$router.push({ path: '/basketball' });$emit('step-change',2)"
       >
       </v-img>
     </v-row>
