@@ -41,11 +41,13 @@
         <v-simple-table dark>
           <tbody>
             <tr>
+              <td>地區</td>
               <td>位置</td>
               <td>日期</td>
               <td>時段</td>
             </tr>
             <tr v-for="(item, i) in queryData" :key="i">
+              <td>{{ item.location }}</td>
               <td>{{ item.name }}</td>
               <td>{{ item.date }}</td>
               <td>{{ item.time }}</td>
@@ -80,26 +82,12 @@ export default {
       id: '',
       pw: '',
       queryData: [
-        /* {
+        {
+          location: '萬華區',
           name: '5樓羽球場A',
           date: '2020-06-18',
           time: '07:00-08:00'
-        },
-        {
-          name: '5樓羽球場A',
-          date: '2020-06-18',
-          time: '08:00-09:00'
-        },
-        {
-          name: '5樓羽球場A',
-          date: '2020-06-19',
-          time: '14:00-15:00'
-        },
-        {
-          name: '5樓羽球場C',
-          date: '2020-06-19',
-          time: '15:00-16:00'
-        } */
+        }
       ]
     }
   }

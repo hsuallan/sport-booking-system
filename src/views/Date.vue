@@ -161,8 +161,12 @@ export default {
       order: {},
       headers: [
         {
-          text: '場地位置',
+          text: '所在地區',
           align: 'start',
+          value: 'location'
+        },
+        {
+          text: '場地位置',
           sortable: false,
           value: 'name'
         },
@@ -171,13 +175,15 @@ export default {
         { text: '預約狀態', value: 'order' }
       ],
       status: [
-        /* {
+        {
+          location: '萬華區',
           name: '5F羽球場01',
           date: this.$route.params.date,
           time: '06:00 - 07:00',
           order: true
         },
         {
+          location: '萬華區',
           name: '5F羽球場02',
           date: this.$route.params.date,
           time: '06:00 - 07:00',
@@ -185,11 +191,12 @@ export default {
 
         },
         {
+          location: '大安區',
           name: '5F羽球場03',
           date: this.$route.params.date,
           time: '07:00 - 08:00',
           order: false
-        } */
+        }
       ]
     }
   },
@@ -197,12 +204,11 @@ export default {
     booking: function (item) {
       /**
        * ajax here
-       * put this.dialog = false in then() to close dialog
        * post data this.order
-       * redirect to /done
+       * put this.$router.replace in then() or final() to redirect to /done
+       * set params.pw = query password
        */
-      this.dialog = false
-      this.$router.replace({ name: 'done', params: { order: this.order, item: item } })
+      this.$router.replace({ name: 'done', params: { order: this.order, item: item, pw: '1a2f' } })
       console.table(this.order)
     }
   },
