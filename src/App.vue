@@ -11,18 +11,14 @@
           <v-icon left>mdi-information-outline</v-icon>查詢
         </v-btn>
       </v-app-bar>
-
       <v-content fluid>
-        <div class="parent">
-          <div class="div1">
-            <stepper :step="step" />
-          </div>
-          <div class="div2">
-            <router-view v-on:step-change="stepChange"></router-view>
-          </div>
-        </div>
+        <v-row justify="center">
+         <v-col lg="6" sm="12"><stepper :step="step" /></v-col>
+        </v-row>
+        <v-row justify="center">
+          <v-col lg="8" sm="12"><router-view v-on:step-change="stepChange"></router-view></v-col>
+        </v-row>
       </v-content>
-
       <v-footer color="cyan" app>
         <v-spacer></v-spacer>
         <span class="white--text">&copy; 2020</span>
@@ -43,7 +39,7 @@ export default {
   },
   data () {
     return {
-      step: 3
+      step: 1
     }
   },
   methods: {
@@ -54,19 +50,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-.parent {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-}
-
-.div1 {
-  grid-area: 1 / 1 / 5 / 2;
-}
-.div2 {
-  grid-area: 1 / 2 / 4 / 6;
-}
-</style>

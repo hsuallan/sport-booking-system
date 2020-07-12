@@ -1,6 +1,6 @@
 <template>
   <v-row align="center" justify="center">
-    <v-col cols="8">
+    <v-col>
       <v-card class="mx-auto" color="" max-width="500">
         <v-card-title>
           <span class="title font-weight-light">以下是{{ this.$route.params.order.name }}先生/小姐的預約訊息</span>

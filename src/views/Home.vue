@@ -5,7 +5,7 @@
         :src="require('../assets/Badminton1.png')"
         class="my-3 Badminton"
         contain
-        height="200"
+        :max-height="width > 600 ? 200 : 100"
         @click="$router.push({ path: '/badminton' });$emit('step-change',2)"
       >
       </v-img>
@@ -13,7 +13,7 @@
         :src="require('../assets/Basketball1.png')"
         class="my-3 Basketball"
         contain
-        height="200"
+        :max-height="width > 600 ? 200 : 100"
         @click="$router.push({ path: '/basketball' });$emit('step-change',2)"
       >
       </v-img>
@@ -28,6 +28,16 @@ export default {
   name: 'Home',
   components: {
 
+  },
+  mounted () {
+    window.addEventListener('resize', () => {
+      this.width = window.screen.width
+    })
+  },
+  data () {
+    return {
+      width: window.screen.width
+    }
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <v-row align="center" justify="center">
-    <v-col cols="8">
-      <v-alert type="info"> Router value:{{ $route.params }} </v-alert>
+    <v-col>
+      <!-- <v-alert type="info"> Router value:{{ $route.params }} </v-alert> -->
       <v-card>
         <v-card-title>
           可預約時段
@@ -177,14 +177,14 @@ export default {
       status: [
         {
           location: '萬華區',
-          name: '5F羽球場01',
+          name: '5F球場01',
           date: this.$route.params.date,
           time: '06:00 - 07:00',
           order: true
         },
         {
           location: '萬華區',
-          name: '5F羽球場02',
+          name: '5F球場02',
           date: this.$route.params.date,
           time: '06:00 - 07:00',
           order: true
@@ -192,7 +192,7 @@ export default {
         },
         {
           location: '大安區',
-          name: '5F羽球場03',
+          name: '3F球場03',
           date: this.$route.params.date,
           time: '07:00 - 08:00',
           order: false

@@ -1,7 +1,7 @@
 <template>
-  <v-row align="center" justify="center">
-    <v-col cols="8">
-      <v-alert type="info"> Router value:{{ $route.params }} </v-alert>
+  <v-row align="center" justify="center" class="ml-2 mr-2">
+    <v-col>
+      <!-- <v-alert type="info"> Router value:{{ $route.params }} </v-alert> -->
       <v-sheet height="500" class="mr-4">
         <v-btn class="ma-2" @click="$refs.calendar.prev()">
           <v-icon>mdi-chevron-left</v-icon>
@@ -31,31 +31,31 @@ export default {
       events: [
         {
           name: '可以預約',
-          start: '2020-06-19'
+          start: ''
         },
         {
           name: '可以預約',
-          start: '2020-06-20'
+          start: ''
         },
         {
           name: '可以預約',
-          start: '2020-06-21'
+          start: ''
         },
         {
           name: '可以預約',
-          start: '2020-06-22'
+          start: ''
         },
         {
           name: '可以預約',
-          start: '2020-06-23'
+          start: ''
         },
         {
           name: '可以預約',
-          start: '2020-06-24'
+          start: ''
         },
         {
           name: '可以預約',
-          start: '2020-06-25'
+          start: ''
         }
       ]
     }
@@ -68,6 +68,17 @@ export default {
         this.$router.push({ path: `/${this.$route.params.sport}/${date}` })
       }
     }
+  },
+  created () {
+    // gendate for demo
+    const today = new Date()
+    const year = today.getFullYear()
+    const date = today.getDate()
+    const month = today.getMonth()
+    const monthStr = month < 10 ? '0' + (month + 1).toString() : (month + 1).toString()
+    this.events.forEach((element, i) => {
+      element.start = `${year}-${monthStr}-${date + 1 + i}`
+    })
   }
 }
 </script>

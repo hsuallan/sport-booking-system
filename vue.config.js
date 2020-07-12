@@ -3,5 +3,5 @@ module.exports = {
     'vuetify'
   ],
 
- publicPath: '/sport-booking-system/'
+  publicPath: '/sport-booking-system/'
 }
